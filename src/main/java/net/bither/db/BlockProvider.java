@@ -292,6 +292,7 @@ public class BlockProvider implements IBlockProvider {
                 preparedStatement.setInt(9, item.isMain() ? 1 : 0);
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
+                LogUtil.printlnError("write block "+item);
             }
             this.mDb.getConn().commit();
         } catch (SQLException e) {
@@ -299,17 +300,23 @@ public class BlockProvider implements IBlockProvider {
         }
         LogUtil.printlnOut("addBlocks");
         SystemUtil.callSystemGC();
-
-
     }
 
     public void addBlock(Block item) {
         boolean blockExists = blockExists(item.getBlockHash());
         if (!blockExists) {
 
-            this.mDb.executeUpdate(insertBlockSql, new String[]{Integer.toString(item.getBlockNo()),
-                    Base58.encode(item.getBlockHash()), Base58.encode(item.getBlockRoot()), Long.toString(item.getBlockVer())
-                    , Long.toString(item.getBlockBits()), Long.toString(item.getBlockNonce()), Integer.toString(item.getBlockTime()), Base58.encode(item.getBlockPrev()), Integer.toString(item.isMain() ? 1 : 0)});
+            if(item.getBlockEncodeHash()!=null){
+                this.mDb.executeUpdate(insertBlockSql, new String[]{Integer.toString(item.getBlockNo()),
+                        item.getBlockEncodeHash(), Base58.encode(item.getBlockRoot()), Long.toString(item.getBlockVer())
+                        , Long.toString(item.getBlockBits()), Long.toString(item.getBlockNonce()), Integer.toString(item.getBlockTime()), Base58.encode(item.getBlockPrev()), Integer.toString(item.isMain() ? 1 : 0)});
+
+
+            }else{
+                this.mDb.executeUpdate(insertBlockSql, new String[]{Integer.toString(item.getBlockNo()),
+                        Base58.encode(item.getBlockHash()), Base58.encode(item.getBlockRoot()), Long.toString(item.getBlockVer())
+                        , Long.toString(item.getBlockBits()), Long.toString(item.getBlockNonce()), Integer.toString(item.getBlockTime()), Base58.encode(item.getBlockPrev()), Integer.toString(item.isMain() ? 1 : 0)});
+            }
         }
         LogUtil.printlnOut("addBlock");
 

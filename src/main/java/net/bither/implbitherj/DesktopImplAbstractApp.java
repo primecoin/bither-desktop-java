@@ -52,6 +52,10 @@ public class DesktopImplAbstractApp extends AbstractApp {
     @Override
     public ISetting initSetting() {
         return new ISetting() {
+            public BitherjSettings.ApiConfig getApiConfig() {
+                return BitherjSettings.ApiConfig.BLOCKCHAIN_INFO;
+            }
+
             @Override
             public BitherjSettings.AppMode getAppMode() {
                 return UserPreference.getInstance().getAppMode();

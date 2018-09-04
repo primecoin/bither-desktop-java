@@ -61,6 +61,10 @@ public class TxProvider implements ITxProvider {
     }
 
 
+    public byte[] isIdentify(Tx tx) {
+        return new byte[0];
+    }
+
     public List<Tx> getTxAndDetailByAddress(String address) {
         List<Tx> txItemList = new ArrayList<Tx>();
         HashMap<Sha256Hash, Tx> txDict = new HashMap<Sha256Hash, Tx>();
