@@ -19,9 +19,9 @@ jar {
     exclude 'META-INF/*.RSA'
 
     manifest {
-        attributes "Implementation-Title": "bither"
+        attributes "Implementation-Title": "primer"
         attributes "Implementation-Version": version
-        attributes "Main-Class": "net.bither.BitherInExecutableJar"
+        attributes "Main-Class": "net.primer.BitherInExecutableJar"
     }
     copy {
         from('calc_addrs.cl') {
@@ -42,7 +42,7 @@ jar {
 
 }
 
-def bitherDir = "build/bither"
+def bitherDir = "build/primer"
 def bitherUnsignedLibPath = "build/lib-unsigned"
 def bitherSignedLibPath = "$bitherDir/lib"
 def mainJar = "${project.name}-${version}.jar"
@@ -151,7 +151,7 @@ dependencies {
     compile 'org.json:json:20140107@jar'
     compile 'com.github.sarxos:webcam-capture:0.3.10@jar'
     compile 'com.nativelibs4java:bridj:0.6.2@jar'
-    compile project(':bitherj/bitherj')
+    compile project(':primerj/primerj')
     compile 'com.google.guava:guava:13.0.1@jar'
     compile 'com.google.code.findbugs:jsr305:2.0.1@jar'
     compile 'net.jcip:jcip-annotations:1.0@jar'

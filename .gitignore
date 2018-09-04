@@ -15,7 +15,7 @@ gradle/wrapper/*
 gradlew*
 local.properties
 gradle.properties
-desktop/net.bither.ApplicationDataDirectoryLocator*
+desktop/net.primer.ApplicationDataDirectoryLocator*
 out
 gradle
 JWrapperBuild

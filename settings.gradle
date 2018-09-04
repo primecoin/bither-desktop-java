@@ -1,5 +1,3 @@
-rootProject.name = 'bither-desktop'
+rootProject.name = 'primer-desktop'
 
-
-
-include 'bitherj/bitherj'
+include 'primerj/primerj'
